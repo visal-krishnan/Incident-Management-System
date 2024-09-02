@@ -19,9 +19,17 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     producer:
+#      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      properties:
-        spring.json.add.type.headers: true  # Optional: include type information in the headers
-        spring.json.include.type: FULL
-        spring.json.type.mapping: com.ust.Incident_Management_System.Model.IncidentReport
+      producer:
+        properties:
+          spring.json.type.mapping: event:com.ust.Incident_Management_System.Model.IncidentReport
+
+#      consumer:
+#        properties:
+#          spring.json.type.mapping: event:com.ust.Notification_service.IncidentReport
+#      properties:
+#        spring.json.add.type.headers: true  # Optional: include type information in the headers
+#        spring.json.include.type: FULL
+#        spring.json.type.mapping: com.ust.Incident_Management_System.Model.IncidentReport

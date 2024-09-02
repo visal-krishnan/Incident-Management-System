@@ -25,8 +25,14 @@ public class IncidentReport {
     private String longitude;
     private String severity;
     private String status;
+    private String state;
+    private String city;
     private String photoPath;
-   // private LocalDateTime reportedAt=LocalDateTime.now();
+    private LocalDateTime reportedAt=LocalDateTime.now();
+
+    public String getMapLink() {
+        return String.format("https://maps.google.com/?q=%s,%s", latitude, longitude);
+    }
 
 
 }
