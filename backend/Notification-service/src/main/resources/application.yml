@@ -13,10 +13,18 @@ spring:
 
   kafka:
     bootstrap-servers: localhost:9092
+    producer:
+      properties:
+        spring.json.type.mapping: event:com.ust.Incident_Management_System.Model.IncidentReport
     consumer:
       group-id: notification-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.value.default.type: com.ust.Notification_service.IncidentReport
-        spring.json.add.type.headers: true  # Optional: include type information in headers
+        spring.json.trusted.packages: "*"
+        # Map the JSON type to the IncidentReport class
+#        spring.json.type.mapping: event:com.ust.Notification_service.IncidentReport
+        # If you need to include type information in headers
+        spring.json.add.type.headers: true
+        # The default type for deserialization
+#        spring.json.value.default.type: com.ust.Notification_service.IncidentReport
