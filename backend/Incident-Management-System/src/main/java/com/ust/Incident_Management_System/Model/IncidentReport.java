@@ -30,5 +30,9 @@ public class IncidentReport {
     private String photoPath;
     private LocalDateTime reportedAt=LocalDateTime.now();
 
+    public String getMapLink() {
+        return String.format("https://maps.google.com/?q=%s,%s", latitude, longitude);
+    }
+
 
 }

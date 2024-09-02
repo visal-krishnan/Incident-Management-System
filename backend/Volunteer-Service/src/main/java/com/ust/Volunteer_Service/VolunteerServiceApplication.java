@@ -24,6 +24,7 @@ public class VolunteerServiceApplication {
 	@KafkaListener(topics = "incident-topic", groupId = "notification-group" )
 	public void handleNotification(@Payload IncidentReport incident){
 		log.info("Recievced notification for IncidentReport is {}", incident);
+		log.info("Map Link is {}", incident.getMapLink());
 		volunteerService.addIncidentReport(incident);
 	}
 }
