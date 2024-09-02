@@ -1,17 +1,24 @@
-server:
-  port: 8083
+#server:
+#  port: 8083
+#
+#spring:
+#  application:
+#    name: emergency-service
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/emergency
+#    username: root
+#    password: pass@word1
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
 
 spring:
   application:
     name: emergency-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/emergency
-    username: root
-    password: pass@word1
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+  config:
+    import:
+      optional: configserver:http://localhost:8887
 
   kafka:
     bootstrap-servers: localhost:9092
