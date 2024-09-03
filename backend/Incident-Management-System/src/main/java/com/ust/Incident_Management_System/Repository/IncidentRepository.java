@@ -8,14 +8,11 @@ import java.util.List;
 @Repository
 public interface IncidentRepository extends JpaRepository<IncidentReport,Long> {
     List<IncidentReport> findByTypeOfPerson(String typeOfPerson);
-    List<IncidentReport> findBySeverity(String severity);
     List<IncidentReport> findByStatus(String status);
     List<IncidentReport> findByTypeOfIncident(String typeOfIncident);
     List<IncidentReport> findByLatitudeAndLongitude(String lat, String lng);
     // Add more methods based on your filtering needs
 
 
-    // Example for a dynamic query
-    List<IncidentReport> findByTypeOfIncidentAndSeverity(String typeOfIncident, String severity);
-
+    List<IncidentReport> findByCity(String city);
 }
