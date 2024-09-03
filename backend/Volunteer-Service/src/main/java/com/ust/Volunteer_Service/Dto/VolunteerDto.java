@@ -1,6 +1,7 @@
 package com.ust.Volunteer_Service.Dto;
 
 import com.ust.Volunteer_Service.Model.VolunteerAvailability;
+import com.ust.Volunteer_Service.Model.VolunteerNotification;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ public class VolunteerDto {
     private String contactName;
     private String address;
     private String state;
-    private String city;
+    private String volunteerCity;
     private Long age;
     private String gender;
 
@@ -27,7 +28,9 @@ public class VolunteerDto {
     private String photoPath;
 
 
-    private VolunteerAvailability availabilityStatus ;
+    private VolunteerAvailability availabilityStatus = VolunteerAvailability.AVAILABLE ;
     private LocalDateTime registeredAt = LocalDateTime.now();
+
+   // private VolunteerNotification notifications;
 
 }

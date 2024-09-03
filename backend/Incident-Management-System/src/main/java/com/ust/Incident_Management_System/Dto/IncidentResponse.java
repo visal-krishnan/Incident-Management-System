@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class IncidentResponse {
 
     private String contactName;
-    private String Location;
+    private String location;
     private String contactPhone;
     private String description;
 

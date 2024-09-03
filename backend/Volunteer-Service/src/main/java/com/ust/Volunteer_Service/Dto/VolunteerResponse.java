@@ -14,6 +14,8 @@ public class VolunteerResponse {
     private Long age;
     private String gender;
 
+    private String volunteerCity;
+
     private String phoneNumber;
     private String email;
     private String skills;

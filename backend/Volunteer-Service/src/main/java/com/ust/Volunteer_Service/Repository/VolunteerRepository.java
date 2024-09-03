@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface VolunteerRepository extends JpaRepository<Volunteer,Long> {
     //List<Volunteer> findByLatitudeAndLongitude(String latitude, String longitude);
-    List<Volunteer> findByCity(String city);
+    List<Volunteer> findByVolunteerCity(String volunteerCity);
     Volunteer findByEmail(String email);
 }

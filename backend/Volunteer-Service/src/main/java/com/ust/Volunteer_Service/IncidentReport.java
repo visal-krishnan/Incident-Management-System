@@ -13,12 +13,12 @@ public class IncidentReport {
 
     private Long incidentId;
     private String typeOfPerson;
-    private String contact_name;
+    private String location;
+    private String contactName;
     private String description;
     private String typeOfIncident;
     private String latitude;
     private String longitude;
-    private String severity;
     private String status;
     private String state;
     private String city;

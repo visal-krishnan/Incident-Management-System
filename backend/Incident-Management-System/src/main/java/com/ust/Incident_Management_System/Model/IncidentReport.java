@@ -18,7 +18,7 @@ public class IncidentReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long incidentId;
     private String contactName;
-    private String Location;
+    private String location;
     private String contactPhone;
     private String description;
     private String typeOfIncident;
