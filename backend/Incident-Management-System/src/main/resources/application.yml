@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Incident-Management-System
+    name: IncidentManagementSystem
   datasource:
     url: jdbc:mysql://localhost:3306/emergency
     username: root

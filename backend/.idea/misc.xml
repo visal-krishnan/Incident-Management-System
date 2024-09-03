@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/Incident-Management-System/pom.xml" />
         <option value="$PROJECT_DIR$/EurakaServer/EurakaServer/pom.xml" />
         <option value="$PROJECT_DIR$/EurekaServer/pom.xml" />
+        <option value="$PROJECT_DIR$/Api-Gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/securityfiles/pom.xml" />
       </list>
     </option>
   </component>

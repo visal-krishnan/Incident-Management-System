@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/incident")
+@RequestMapping("/api/incident")
 public class IncidentController {
 
     @Autowired

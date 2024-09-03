@@ -12,15 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/volunteers")
+@RequestMapping("/api/notifications")
 public class VolunteerNotificationController {
 
     @Autowired
     private VolunteerNotificationService notificationService;
 
-    @GetMapping("/{volunteerId}/notifications")
-    public ResponseEntity<List<VolunteerNotificationResponse>> getNotificationsForVolunteer(
-            @PathVariable Long volunteerId) {
+    @GetMapping("/{volunteerId}")
+    public ResponseEntity<List<VolunteerNotificationResponse>> getNotificationsForVolunteer(@PathVariable Long volunteerId) {
         List<VolunteerNotificationResponse> notifications = notificationService.getNotificationsForVolunteer(volunteerId);
         return ResponseEntity.ok(notifications);
     }
