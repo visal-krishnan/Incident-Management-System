@@ -17,6 +17,18 @@ import java.util.stream.Collectors;
 
 public class VolunteerService {
     private final List<IncidentReport> incidentReports = new ArrayList<>();
+    public synchronized void addIncidentReport(IncidentReport report) {
+        incidentReports.add(report);
+    }
+    public synchronized List<IncidentReport> getAllIncidentReports() {
+        return new ArrayList<>(incidentReports);
+    }
+
+    public synchronized List<IncidentReport> getIncidentReportsByCity(String cityName) {
+        return incidentReports.stream()
+                .filter(report -> cityName.equals(report.getCity()))
+                .collect(Collectors.toList());
+    }
 
     @Autowired
     private VolunteerRepository volunteersRepo;
@@ -32,12 +44,46 @@ public class VolunteerService {
       return volunteers.stream().map(this::EntityToDto).collect(Collectors.toList());
    }
 
-    public synchronized void addIncidentReport(IncidentReport report) {
-        incidentReports.add(report);
+
+
+
+    public VolunteerResponse updateVolunteer(Long id, VolunteerDto volunteerDto) {
+        return volunteersRepo.findById(id).map(volunteer -> {
+            volunteer.setContactName(volunteerDto.getContactName());
+            volunteer.setAddress(volunteerDto.getAddress());
+            volunteer.setState(volunteerDto.getState());
+            volunteer.setVolunteerCity(volunteerDto.getVolunteerCity());
+            volunteer.setAge(volunteerDto.getAge());
+            volunteer.setGender(volunteerDto.getGender());
+            volunteer.setPhoneNumber(volunteerDto.getPhoneNumber());
+            volunteer.setEmail(volunteerDto.getEmail());
+            volunteer.setPassword(volunteerDto.getPassword());
+            volunteer.setSkills(volunteerDto.getSkills());
+            volunteer.setPhotoPath(volunteerDto.getPhotoPath());
+            volunteer.setAvailabilityStatus(volunteerDto.getAvailabilityStatus());
+            Volunteer updatedVolunteer = volunteersRepo.save(volunteer);
+            return EntityToDto(updatedVolunteer);
+        }).orElse(null);
     }
-    public synchronized List<IncidentReport> getAllIncidentReports() {
-        return new ArrayList<>(incidentReports);
+
+    public boolean deleteVolunteer(Long id) {
+        if (volunteersRepo.existsById(id)) {
+            volunteersRepo.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
+
+    public List<Volunteer> getVolunteersByCity(String city) {
+        return volunteersRepo.findByVolunteerCity(city);
+    }
+
+    public Volunteer getVolunteerByEmail(String email) {
+        return volunteersRepo.findByEmail(email);
+    }
+
+
 
 
 
@@ -49,7 +95,7 @@ public class VolunteerService {
         volunteer.setContactName(volunteerDto.getContactName());
         volunteer.setAddress(volunteerDto.getAddress());
         volunteer.setState(volunteerDto.getState());
-        volunteer.setCity(volunteerDto.getCity());
+        volunteer.setVolunteerCity(volunteerDto.getVolunteerCity());
         volunteer.setAge(volunteerDto.getAge());
         volunteer.setGender(volunteerDto.getGender());
         volunteer.setPhoneNumber(volunteerDto.getPhoneNumber());
@@ -69,6 +115,7 @@ public class VolunteerService {
         volunteerResponse.setAddress(volunteer.getAddress());
         volunteerResponse.setAge(volunteer.getAge());
         volunteerResponse.setGender(volunteer.getGender());
+        volunteerResponse.setVolunteerCity(volunteer.getVolunteerCity());
         volunteerResponse.setPhoneNumber(volunteer.getPhoneNumber());
         volunteerResponse.setEmail(volunteer.getEmail());
         volunteerResponse.setSkills(volunteer.getSkills());

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,7 +20,7 @@ public class Volunteer {
     private String contactName;
     private String address;
     private String state;
-    private String city;
+    private String volunteerCity;
     private Long age;
     private String gender;
 
@@ -32,7 +33,11 @@ public class Volunteer {
 
 
     @Enumerated(EnumType.STRING)
-    private VolunteerAvailability availabilityStatus ;
+    private VolunteerAvailability availabilityStatus = VolunteerAvailability.AVAILABLE ;
     private LocalDateTime registeredAt = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VolunteerNotification> notifications;
+
 
 }
