@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/Volunteer-Service/pom.xml" />
         <option value="$PROJECT_DIR$/Notification-service/pom.xml" />
         <option value="$PROJECT_DIR$/Incident-Management-System/pom.xml" />
+        <option value="$PROJECT_DIR$/EurakaServer/EurakaServer/pom.xml" />
+        <option value="$PROJECT_DIR$/EurekaServer/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,21 +1,18 @@
-package com.ust.Volunteer_Service.Model;
+package com.ust.Volunteer_Service.Dto;
 
-import jakarta.persistence.*;
+import com.ust.Volunteer_Service.Model.VolunteerAvailability;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="Volunteers")
-public class Volunteer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long volunteerId;
+public class VolunteerDto {
     private String contactName;
     private String address;
     private String state;
@@ -28,10 +25,8 @@ public class Volunteer {
     private String password;
     private String skills;
     private String photoPath;
-//    private String personStatus;
 
 
-    @Enumerated(EnumType.STRING)
     private VolunteerAvailability availabilityStatus ;
     private LocalDateTime registeredAt = LocalDateTime.now();
 
