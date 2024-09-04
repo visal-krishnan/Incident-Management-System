@@ -57,9 +57,8 @@ public class VolunteerService {
             volunteer.setGender(volunteerDto.getGender());
             volunteer.setPhoneNumber(volunteerDto.getPhoneNumber());
             volunteer.setEmail(volunteerDto.getEmail());
-            volunteer.setPassword(volunteerDto.getPassword());
             volunteer.setSkills(volunteerDto.getSkills());
-            volunteer.setPhotoPath(volunteerDto.getPhotoPath());
+
             volunteer.setAvailabilityStatus(volunteerDto.getAvailabilityStatus());
             Volunteer updatedVolunteer = volunteersRepo.save(volunteer);
             return EntityToDto(updatedVolunteer);
@@ -78,11 +77,14 @@ public class VolunteerService {
     public List<Volunteer> getVolunteersByCity(String city) {
         return volunteersRepo.findByVolunteerCity(city);
     }
-
+//
     public Volunteer getVolunteerByEmail(String email) {
         return volunteersRepo.findByEmail(email);
     }
-
+//    public VolunteerResponse getVolunteerByEmail(String email) {
+//        Volunteer volunteer = volunteersRepo.findByEmail(email);
+//        return EntityToDto(volunteer);
+//    }
 
 
 
@@ -100,9 +102,9 @@ public class VolunteerService {
         volunteer.setGender(volunteerDto.getGender());
         volunteer.setPhoneNumber(volunteerDto.getPhoneNumber());
         volunteer.setEmail(volunteerDto.getEmail());
-        volunteer.setPassword(volunteerDto.getPassword());
+
         volunteer.setSkills(volunteerDto.getSkills());
-        volunteer.setPhotoPath(volunteerDto.getPhotoPath());
+//        volunteer.setPhotoPath(volunteerDto.getPhotoPath());
 
 
         return volunteer;
@@ -119,7 +121,7 @@ public class VolunteerService {
         volunteerResponse.setPhoneNumber(volunteer.getPhoneNumber());
         volunteerResponse.setEmail(volunteer.getEmail());
         volunteerResponse.setSkills(volunteer.getSkills());
-        volunteerResponse.setPhotoPath(volunteer.getPhotoPath());
+//        volunteerResponse.setPhotoPath(volunteer.getPhotoPath());
         volunteerResponse.setAvailabilityStatus(volunteer.getAvailabilityStatus());
 
         return volunteerResponse;

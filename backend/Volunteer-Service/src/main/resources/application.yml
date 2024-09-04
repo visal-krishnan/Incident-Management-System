@@ -12,6 +12,24 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+#  default-filters:
+#    # This filter removes duplicate CORS headers if present
+#    - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#    # Global CORS configuration
+#    - globalcors:
+#        corsConfigurations:
+#          '[/**]': # Apply CORS to all routes
+#            allowedOrigins:
+#              - "http://localhost:3000"
+#              - "http://127.0.0.1:3001"  # Allowed origins, separated for clarity
+#            allowedHeaders: "*"  # Allow all headers
+#            allowedMethods: # Allowed HTTP methods
+#              - GET
+#              - POST
+#              - DELETE
+#              - PUT
+#              - OPTIONS
+#            allowCredentials: true  # If using cookies for authentication
 
 
 #

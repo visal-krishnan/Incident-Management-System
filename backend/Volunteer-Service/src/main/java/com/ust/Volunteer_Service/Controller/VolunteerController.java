@@ -27,7 +27,11 @@ public class VolunteerController {
         return ResponseEntity.ok(volunteerService.getAllVolunteers());
     }
 
-
+//    @GetMapping("/findby-email/{email}")
+//    public ResponseEntity<VolunteerResponse> getResidentByEmail(@PathVariable("email") String email) {
+//        VolunteerResponse volunteer = volunteerService.getVolunteerByEmail(email);
+//        return ResponseEntity.ok(volunteer);
+//    }
 
 //    @GetMapping("/getincidentreports")
 //    public ResponseEntity<List<IncidentReport>> getIncidentReports() {

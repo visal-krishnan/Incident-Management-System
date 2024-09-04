@@ -28,7 +28,7 @@ public class IncidentReportDto {
     private IncidentStatus status; // Default status is ACTIVE
     private String state;
     private String city;
-    private String photoPath;
+   // private String photoPath;
     private LocalDateTime reportedAt=LocalDateTime.now();
 
     private String mapLink = String.format("https://maps.google.com/?q=%s,%s", latitude, longitude);
