@@ -31,6 +31,6 @@ public class VolunteerDto {
     private VolunteerAvailability availabilityStatus = VolunteerAvailability.AVAILABLE ;
     private LocalDateTime registeredAt = LocalDateTime.now();
 
-   // private VolunteerNotification notifications;
+   private VolunteerNotification notifications;
 
 }

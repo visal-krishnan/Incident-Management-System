@@ -128,6 +128,8 @@ public class VolunteerService {
     }
 
 
-
-
+    public VolunteerResponse getVolunteerById(Long volunteerId) {
+        Volunteer volunteer = volunteersRepo.findById(volunteerId).orElse(null);
+        return EntityToDto(volunteer);
+    }
 }
