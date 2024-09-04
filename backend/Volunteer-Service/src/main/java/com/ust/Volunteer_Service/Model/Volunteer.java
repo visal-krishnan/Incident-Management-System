@@ -1,5 +1,6 @@
 package com.ust.Volunteer_Service.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +36,7 @@ public class Volunteer {
     private LocalDateTime registeredAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<VolunteerNotification> notifications;
 
 

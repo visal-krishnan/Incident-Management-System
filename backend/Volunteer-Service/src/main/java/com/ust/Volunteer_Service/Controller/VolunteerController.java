@@ -21,6 +21,11 @@ public class VolunteerController {
     public ResponseEntity<VolunteerResponse>addVolunteer(@RequestBody VolunteerDto volunteerDto){
         return ResponseEntity.ok(volunteerService.saveVolunteer(volunteerDto));
     }
+    @GetMapping("/{volunteerId}")
+    public ResponseEntity<VolunteerResponse> getVolunteerById(@PathVariable Long volunteerId) {
+        VolunteerResponse volunteer = volunteerService.getVolunteerById(volunteerId);
+        return ResponseEntity.ok(volunteer);
+    }
 
     @GetMapping
     public ResponseEntity<List<VolunteerResponse>> getAllVolunteers() {
