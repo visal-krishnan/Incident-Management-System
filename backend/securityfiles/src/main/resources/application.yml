@@ -32,6 +32,25 @@ spring:
             uri: lb://VOLUNTEER-SERVICE
             predicates:
               - Path=/api/notifications/**
+      default-filters:
+        # This filter removes duplicate CORS headers if present
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        # Global CORS configuration
+        - globalcors:
+            corsConfigurations:
+              '[/**]': # Apply CORS to all routes
+                allowedOrigins:
+                  - "http://localhost:3000"
+                  - "http://127.0.0.1:3001"  # Allowed origins, separated for clarity
+                allowedHeaders: "*"  # Allow all headers
+                allowedMethods: # Allowed HTTP methods
+                  - GET
+                  - POST
+                  - DELETE
+                  - PUT
+                  - OPTIONS
+                allowCredentials: true  # If using cookies for authentication
+
 
 
 
@@ -68,3 +87,4 @@ security:
   jwt:
     secret-key: 3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b
     expiration-time: 86400000
+

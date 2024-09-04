@@ -26,10 +26,8 @@ public class Volunteer {
 
     private String phoneNumber;
     private String email;
-    private String password;
     private String skills;
-    private String photoPath;
-//    private String personStatus;
+//    private String photoPath;
 
 
     @Enumerated(EnumType.STRING)

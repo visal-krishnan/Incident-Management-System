@@ -23,10 +23,10 @@ public class VolunteerDto {
 
     private String phoneNumber;
     private String email;
-    private String password;
-    private String skills;
-    private String photoPath;
 
+    private String skills;
+//    private String photoPath;
+//    private String password;
 
     private VolunteerAvailability availabilityStatus = VolunteerAvailability.AVAILABLE ;
     private LocalDateTime registeredAt = LocalDateTime.now();

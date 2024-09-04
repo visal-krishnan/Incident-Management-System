@@ -19,7 +19,7 @@ public class VolunteerResponse {
     private String phoneNumber;
     private String email;
     private String skills;
-    private String photoPath;
+//    private String photoPath;
 
 
     private VolunteerAvailability availabilityStatus ;
