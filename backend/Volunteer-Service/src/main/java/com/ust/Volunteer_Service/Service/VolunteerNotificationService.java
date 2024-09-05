@@ -1,5 +1,8 @@
 package com.ust.Volunteer_Service.Service;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import com.ust.Incident_Management_System.Model.IncidentReport;
 import com.ust.Volunteer_Service.Dto.VolunteerNotificationResponse;
 import com.ust.Volunteer_Service.Model.Volunteer;
@@ -15,6 +18,17 @@ import java.util.stream.Collectors;
 
 @Service
 public class VolunteerNotificationService {
+    private  String accountSid="ACc72d51195e64f7b301dbcadbfc873cb6";
+
+
+    private String authToken = "b55550d057c5ca2913768811a1383b21";
+
+
+    private String fromPhoneNumber = "+14123576884";
+
+    public VolunteerNotificationService() {
+        Twilio.init(accountSid, authToken);
+    }
 
     @Autowired
     private VolunteerNotificationRepository notificationRepository;
@@ -36,6 +50,7 @@ public class VolunteerNotificationService {
     public void addNotificationtoVolunteer(IncidentReport incident) {
         String city = incident.getCity();
         List<Volunteer> volunteersInCity = volunteerRepository.findByVolunteerCity(city);
+
         for (Volunteer volunteer : volunteersInCity) {
             VolunteerNotification notification = new VolunteerNotification();
             notification.setMessage(createNotificationMessage(incident));
@@ -43,6 +58,7 @@ public class VolunteerNotificationService {
             notification.setCreatedAt(LocalDateTime.now());
             // If you have an IncidentReport DTO or related information, set it if necessary
             notification.setIncidentReport(incident);
+            sendSms(volunteer.getPhoneNumber(), "IncidentReported at " + incident.getMapLink() + "Please find more details in our application");
 
             // Save the notification to the database
             notificationRepository.save(notification);
@@ -72,6 +88,10 @@ public class VolunteerNotificationService {
                     return response;
                 })
                 .collect(Collectors.toList());
+    }
+
+    public void sendSms(String toPhoneNumber, String message) {
+        Message.creator(new PhoneNumber(toPhoneNumber), new PhoneNumber(fromPhoneNumber), message).create();
     }
 }
 

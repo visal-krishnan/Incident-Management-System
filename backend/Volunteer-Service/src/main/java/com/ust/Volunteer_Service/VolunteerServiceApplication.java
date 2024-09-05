@@ -1,5 +1,6 @@
 package com.ust.Volunteer_Service;
 
+import com.twilio.Twilio;
 import com.ust.Incident_Management_System.Model.IncidentReport;
 import com.ust.Volunteer_Service.Dto.VolunteerResponse;
 import com.ust.Volunteer_Service.Model.Volunteer;
@@ -19,6 +20,16 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 @Slf4j
 public class VolunteerServiceApplication {
+	private  String accountSid="ACc72d51195e64f7b301dbcadbfc873cb6";
+
+
+	private String authToken = "b55550d057c5ca2913768811a1383b21";
+
+
+	private String fromPhoneNumber = "+14123576884";
+	public VolunteerServiceApplication() {
+		Twilio.init(accountSid, authToken);
+	}
 
 	@Autowired
 	private VolunteerService volunteerService;
