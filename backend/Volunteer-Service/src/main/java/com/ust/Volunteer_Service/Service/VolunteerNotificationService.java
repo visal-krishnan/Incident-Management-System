@@ -21,7 +21,7 @@ public class VolunteerNotificationService {
     private  String accountSid="ACc72d51195e64f7b301dbcadbfc873cb6";
 
 
-    private String authToken = "b55550d057c5ca2913768811a1383b21";
+    private String authToken = "216dd7b4a778a499dfcb2e1c072e0664";
 
 
     private String fromPhoneNumber = "+14123576884";
@@ -58,10 +58,11 @@ public class VolunteerNotificationService {
             notification.setCreatedAt(LocalDateTime.now());
             // If you have an IncidentReport DTO or related information, set it if necessary
             notification.setIncidentReport(incident);
-            sendSms(volunteer.getPhoneNumber(), "IncidentReported at " + incident.getMapLink() + "Please find more details in our application");
 
             // Save the notification to the database
             notificationRepository.save(notification);
+            sendSms(volunteer.getPhoneNumber(), "IncidentReported at " + incident.getMapLink() + "Please find more details in our application");
+
         }
 
     }
