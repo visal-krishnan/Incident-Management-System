@@ -14,6 +14,7 @@ public class IncidentReport {
     private Long incidentId;
     private String typeOfPerson;
     private String location;
+    private String contactPhone;
     private String contactName;
     private String description;
     private String typeOfIncident;
